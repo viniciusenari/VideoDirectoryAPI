@@ -1,5 +1,5 @@
 from django.contrib import admin
-from videos.models import Video
+from videos.models import Video, Category
 
 class Videos(admin.ModelAdmin):
     list_display = ('title', 'description', 'url')
@@ -10,3 +10,5 @@ admin.site.register(Video, Videos)
 class Categories(admin.ModelAdmin):
     list_display = ('title', 'color')
     list_display_links = ('title', 'color')
+
+admin.site.register(Category, Categories)
