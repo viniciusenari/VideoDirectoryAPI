@@ -6,3 +6,7 @@ class Videos(admin.ModelAdmin):
     list_display_links = ('title', 'description', 'url')
 
 admin.site.register(Video, Videos)
+
+class Categories(admin.ModelAdmin):
+    list_display = ('title', 'color')
+    list_display_links = ('title', 'color')
