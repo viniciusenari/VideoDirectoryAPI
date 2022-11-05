@@ -8,7 +8,7 @@ class VideosTestCase(APITestCase):
     def setUp(self):
         self.list_url = reverse('Videos-list')
         self.category = Category.objects.create(title='Test Category', color='#000000')
-        self.video = Video.objects.create(title='Test Video', description='Test Description', url='https://www.youtube.com/watch?v=9bZkp7q19f0', category=self.category)
+        self.video = Video.objects.create(title='Test Video', description='Test Description', url='https://www.youtube.com/watch?v=9bZkp7q19f0', category_id=self.category)
 
     def test_get_videos(self):
         response = self.client.get(self.list_url)
@@ -26,7 +26,7 @@ class VideosTestCase(APITestCase):
         self.assertEqual(response.data['title'], 'Test Video 2')
         self.assertEqual(response.data['description'], 'Test Description 2')
         self.assertEqual(response.data['url'], 'https://youtu.be/gBdwZeK4igM')
-        self.assertEqual(response.data['category'], self.category.id)
+        self.assertEqual(response.data['category_id'], self.category.id)
     
     def test_delete_video(self):
         response = self.client.delete(self.list_url + str(self.video.id) + '/')
@@ -44,7 +44,7 @@ class VideosTestCase(APITestCase):
         self.assertEqual(response.data['title'], 'Test Video 2')
         self.assertEqual(response.data['description'], 'Test Description 2')
         self.assertEqual(response.data['url'], 'https://youtu.be/gBdwZeK4igM')
-        self.assertEqual(response.data['category'], self.category.id)
+        self.assertEqual(response.data['category_id'], self.category.id)
 
 class CategoryTestCase(APITestCase):
 
