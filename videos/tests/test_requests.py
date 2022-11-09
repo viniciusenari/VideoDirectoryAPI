@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from rest_framework.test import APITestCase
 from videos.models import Video, Category
 from django.urls import reverse
@@ -9,6 +11,9 @@ class VideosTestCase(APITestCase):
         self.list_url = reverse('Videos-list')
         self.category = Category.objects.create(title='Test Category', color='#000000')
         self.video = Video.objects.create(title='Test Video', description='Test Description', url='https://www.youtube.com/watch?v=9bZkp7q19f0', category_id=self.category)
+
+        self.user = User.objects.create_user('Test user', password = '123456')
+        self.client.force_authenticate(user=self.user)
 
     def test_get_videos(self):
         response = self.client.get(self.list_url)
@@ -51,6 +56,9 @@ class CategoryTestCase(APITestCase):
     def setUp(self):
         self.list_url = reverse('Categories-list')
         self.category = Category.objects.create(title='Test Category', color='#000000')
+
+        self.user = User.objects.create_user('Test user', password = '123456')
+        self.client.force_authenticate(user=self.user)
 
     def test_get_categories(self):
         response = self.client.get(self.list_url)
