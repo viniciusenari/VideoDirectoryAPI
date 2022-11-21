@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'videos',
     'django_filters',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

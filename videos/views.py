@@ -31,9 +31,14 @@ class CategoriesViewSet(viewsets.ModelViewSet):
         return super(CategoriesViewSet, self).dispatch(*args, **kwargs)
 
 class VideosByCategoryViewSet(generics.ListAPIView):
+
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Video.objects.none()
+
         queryset = Video.objects.filter(category=self.kwargs['pk'])
         return queryset
+
     serializer_class = VideosByCategorySerializer
 
     authentication_classes = [BasicAuthentication]
