@@ -12,10 +12,6 @@ class AuthenticationUserTestCase(APITestCase):
     def test_user_authentication(self):
         user = authenticate(username='Test user', password='123456')
         self.assertTrue((user is not None) and user.is_authenticated)
-
-    def test_unauthorized_get_request(self):
-        response = self.client.get(self.list_url)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
     
     def test_user_authentication_incorrect_username(self):
         user = authenticate(username='Test user 2', password='123456')
