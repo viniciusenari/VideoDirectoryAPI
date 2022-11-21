@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from videos.views import VideosViewSet, CategoriesViewSet, VideosByCategoryViewSet
+from videos.views import VideosViewSet, CategoriesViewSet, VideosByCategoryViewSet, FreeVideosViewSet
 from rest_framework import routers
 
 router = routers.DefaultRouter()
@@ -11,4 +11,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('categories/<int:pk>/videos/', VideosByCategoryViewSet.as_view()),
+    path('videos/free', FreeVideosViewSet.as_view()),
 ]
