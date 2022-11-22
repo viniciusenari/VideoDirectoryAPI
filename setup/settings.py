@@ -79,11 +79,18 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+from decouple import config
+password = config('MONGO_PASSWORD')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+            'ENGINE': 'djongo',
+            'NAME': 'videos-db',
+            'ENFORCE_SCHEMA': False,
+            'CLIENT': {
+                'host': f"mongodb+srv://vikken:{password}@cluster0.yt77lyp.mongodb.net/?retryWrites=true&w=majority"
+            }  
+        }
 }
 
 
