@@ -26,7 +26,8 @@ router.register('videos', VideosViewSet, basename='Videos')
 router.register('categories', CategoriesViewSet, basename='Categories')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('django_admin_page/', admin.site.urls),
     path('', include(router.urls)),
     path('categories/<int:pk>/videos/', VideosByCategoryViewSet.as_view()),
     path('videos/free', FreeVideosViewSet.as_view()),
