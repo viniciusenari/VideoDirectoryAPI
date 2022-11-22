@@ -24,14 +24,15 @@ class VideosTestCase(APITestCase):
             'title': 'Test Video 2',
             'description': 'Test Description 2',
             'url': 'https://youtu.be/gBdwZeK4igM',
-            'category': self.category.id
+            'category_id': self.category.id
         }
         response = self.client.post(self.list_url, data)
+
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data['title'], 'Test Video 2')
-        self.assertEqual(response.data['description'], 'Test Description 2')
-        self.assertEqual(response.data['url'], 'https://youtu.be/gBdwZeK4igM')
-        self.assertEqual(response.data['category_id'], self.category.id)
+        self.assertEqual(response.data['title'], data['title'])
+        self.assertEqual(response.data['description'], data['description'])
+        self.assertEqual(response.data['url'], data['url'])
+        self.assertEqual(response.data['category_id'], data['category_id'])
     
     def test_delete_video(self):
         response = self.client.delete(self.list_url + str(self.video.id) + '/')
@@ -42,14 +43,14 @@ class VideosTestCase(APITestCase):
             'title': 'Test Video 2',
             'description': 'Test Description 2',
             'url': 'https://youtu.be/gBdwZeK4igM',
-            'category': self.category.id
+            'category_id': self.category.id
         }
         response = self.client.put(self.list_url + str(self.video.id) + '/', data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['title'], 'Test Video 2')
-        self.assertEqual(response.data['description'], 'Test Description 2')
-        self.assertEqual(response.data['url'], 'https://youtu.be/gBdwZeK4igM')
-        self.assertEqual(response.data['category_id'], self.category.id)
+        self.assertEqual(response.data['title'], data['title'])
+        self.assertEqual(response.data['description'], data['description'])
+        self.assertEqual(response.data['url'], data['url'])
+        self.assertEqual(response.data['category_id'], data['category_id'])
 
 class CategoryTestCase(APITestCase):
 
@@ -71,8 +72,8 @@ class CategoryTestCase(APITestCase):
         }
         response = self.client.post(self.list_url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data['title'], 'Test Category 2')
-        self.assertEqual(response.data['color'], '#000000')
+        self.assertEqual(response.data['title'], data['title'])
+        self.assertEqual(response.data['color'], data['color'])
     
     def test_delete_category(self):
         response = self.client.delete(self.list_url + str(self.category.id) + '/')
@@ -85,6 +86,6 @@ class CategoryTestCase(APITestCase):
         }
         response = self.client.put(self.list_url + str(self.category.id) + '/', data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['title'], 'Test Category 2')
-        self.assertEqual(response.data['color'], '#000000')
+        self.assertEqual(response.data['title'], data['title'])
+        self.assertEqual(response.data['color'], data['color'])
     
