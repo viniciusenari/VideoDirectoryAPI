@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
 
 # Application definition
@@ -79,8 +79,6 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-from decouple import config
-password = config('MONGO_PASSWORD')
 
 DATABASES = {
     'default': {
@@ -88,7 +86,7 @@ DATABASES = {
             'NAME': 'videos-db',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': f"mongodb+srv://vikken:{password}@cluster0.yt77lyp.mongodb.net/?retryWrites=true&w=majority"
+                'host': config('MONGO_HOST'),
             }  
         }
 }
@@ -143,7 +141,7 @@ REST_FRAMEWORK = {
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',
+        'LOCATION': config('REDIS_URL'),
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
