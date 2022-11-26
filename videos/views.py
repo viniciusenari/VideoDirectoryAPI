@@ -36,7 +36,7 @@ class VideosByCategoryViewSet(generics.ListAPIView):
         if getattr(self, 'swagger_fake_view', False):
             return Video.objects.none()
 
-        queryset = Video.objects.filter(category=self.kwargs['pk'])
+        queryset = Video.objects.filter(category_id=self.kwargs['pk'])
         return queryset
 
     serializer_class = VideosByCategorySerializer
