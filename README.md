@@ -58,13 +58,13 @@ python manage.py runserver
 ## API Endpoints
 | HTTP Verbs | Endpoints | Action | Parameters |
 | --- | --- | --- | --- |
-| GET | /categories/ | Retrieve a list of categories |
+| GET | /categories/ | Retrieve a list of categories | ?page
 | POST | /categories/ | Create a new category |
 | GET | /categories/{id}/ | Retrieve a single category |
 | PUT | /categories/{id}/ | Update a single category |
 | PATCH | /categories/{id}/ | Partially update a single category |
 | DELETE | /categories/{id}/ | Delete a single category |
-| GET | /categories/{id}/videos | Retrieve a list of videos in the same categories |
+| GET | /categories/{id}/videos | Retrieve a list of videos in the same categories | ?page
 | GET | /videos/ | Retrieve a list of videos | ?search, ?page |
 | GET | /videos/free | Retrieve a list of videos for unauthenticated users |
 | POST | /videos/ | Create a new videos |
