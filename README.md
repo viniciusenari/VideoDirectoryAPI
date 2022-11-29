@@ -10,7 +10,7 @@ This application is a REST API that allows users to store video information sepa
 * Users can store and retrieve video categories information.
 * Users can get a list of videos separated by category.
 * Public (non-authenticated) users can get information from a limited set of videos.
-* Pagination, search, and caching.
+* Pagination, search, throttling, and caching.
 ## Technologies Used
 * [Python](https://www.python.org/) - Programming language.
 * [Django Rest Framework](https://www.django-rest-framework.org/) - This is a powerful and flexible toolkit for building Web APIs. It is used to build APIs in Django.
