@@ -52,7 +52,8 @@ class VideosByCategoryViewSet(generics.ListAPIView):
 
 class FreeVideosViewSet(generics.ListAPIView):
     def get_queryset(self):
-        queryset = Video.objects.order_by("-id")[:10]
+        # query 10 videos
+        queryset = Video.objects.filter(category_id=1)
         return queryset
     serializer_class = VideoSerializer
 
