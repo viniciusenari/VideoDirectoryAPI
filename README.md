@@ -4,7 +4,7 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
 ## Introduction
-This application is a REST API that allows users to store video information separated in categories.
+This application is a REST API that allows users to index video information separated in categories.
 ## Project Support Features
 * Users can store and retrieve videos information.
 * Users can store and retrieve video categories information.
@@ -67,7 +67,7 @@ python manage.py runserver
 | GET | /categories/{id}/videos | Retrieve a list of videos in the same categories | ?page
 | GET | /videos/ | Retrieve a list of videos | ?search, ?page |
 | GET | /videos/free | Retrieve a list of videos for unauthenticated users |
-| POST | /videos/ | Create a new videos |
+| POST | /videos/ | Create a new video |
 | GET | /videos/{id}/ | Retrieve a single video |
 | PUT | /videos/{id}/ | Update a single video |
 | PATCH | /videos/{id}/ | Partially update a single video |
