@@ -4,7 +4,7 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
 ## Introduction
-This application is a REST API that allows users to index video information separated in categories.
+This application is a REST API that allows users to index and retrieve video information separated in categories.
 ## Project Support Features
 * Users can store and retrieve videos information.
 * Users can store and retrieve video categories information.
